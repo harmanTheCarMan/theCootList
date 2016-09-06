@@ -1,0 +1,22 @@
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY NOT NULL,
+  email VARCHAR(255),
+  password VARCHAR(255)
+);
+
+DROP TABLE IF EXISTS tabs;
+CREATE TABLE tabs (
+  id SERIAL PRIMARY KEY NOT NULL,
+  title VARCHAR(255),
+  user_id SERIAL NOT NULL
+);
+
+DROP TABLE IF EXISTS items;
+CREATE TABLE items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  description VARCHAR(255),
+  completed BOOLEAN,
+  rank INTEGER,
+  tab_id SERIAL
+);
