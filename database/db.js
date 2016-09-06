@@ -22,5 +22,5 @@ const User = {
 }
 
 module.exports = {
-  User, getUser, createUser
+  User
 }
