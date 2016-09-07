@@ -9,6 +9,7 @@ const passport = require( './authentication/passport' ).passport
 
 const routes = require('./routes/index')
 const users = require('./routes/users')
+const tasks = require('./routes/tasks')
 
 const app = express()
 
@@ -29,6 +30,8 @@ app.use( passport.session() )
 
 app.use('/', routes)
 app.use('/users', users)
+app.use('/tasks', tasks)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
