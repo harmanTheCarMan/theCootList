@@ -9,7 +9,7 @@ const authenticationFields = {
 const strategy = ( email, password, done ) => {
   User.login( email, password )
     .then( user => {
-      console.log( 'Strategy', email, password, user )
+      // console.log( 'Strategy', email, password, user )
       return done( null, user )
     })
     .catch( error => {

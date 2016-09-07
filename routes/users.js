@@ -28,6 +28,7 @@ router.post( '/register', (req, res) => {
 })
 
 router.get( '/login', (req, res, next) => {
+  
   res.render('login')
 })
 
