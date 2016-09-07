@@ -1,18 +1,11 @@
 extends layout
 
 block content
-  if user !== null
-    p #{user}
-  else   
-  h1= title
-  p Welcome to #{title}, #{user}
-
-  container
-    div
-      a(href='/users/register') Register
-    div
-      a(href='/users/login') Login
-    div
-      a(href='/users/login') Logout
-
-      
+	h1= title
+	p Welcome to #{title}
+	if (!user)
+		a(href='/users/register') Register
+			div
+		a(href='/users/login') Login
+	if (user)
+		You are currently logged in as #{user.email}
