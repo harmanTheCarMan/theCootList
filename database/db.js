@@ -15,9 +15,9 @@ const User = {
   },
   find: id => {
     return db.one( findById, [id])
-  }
+  },
   login: (email, password) => {
-    return db.any( findByEmailAndPassword, [ email, password ])
+    return db.one( findByEmailAndPassword, [ email, password ])
   }
 }
 
