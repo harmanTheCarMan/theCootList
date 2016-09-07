@@ -28,7 +28,7 @@ router.post( '/register', (req, res) => {
 })
 
 router.get( '/login', (req, res, next) => {
-  res.render('login')
+  res.render('login', { user: req.user})
 })
 
 router.post('/login', passport.authenticate( 'local', loginRedirects ))
@@ -37,5 +37,7 @@ router.get( '/logout', (request, response) => {
   request.logout()
   response.redirect( '/' )
 })
+
+// router.post('/logout', ) //Do we need a router.post for logout?
 
 module.exports = router
