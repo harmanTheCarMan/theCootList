@@ -1,16 +1,18 @@
 const express = require('express')
 const router = express.Router()
-const Task = require('../database/db').Task
+const Item = require('../database/db').Item
 
 const authorize = require('../authentication/passport').authorize
 
 router.get('/create', authorize, (req, res, next) => {
-  res.render('create', { title: 'New Task' })
+  res.render('create', { title: 'New Item' })
 })
 
 router.post('/create', authorize, (req, res, next) => {
-  Task.create(req.body.description).then(
-  res.redirect('/'))
+  Item.create(req.body.description)
+    .then(
+      res.redirect('/')
+    )
 })
 
 router.get('/update/:id', authorize, (req, res, next) => {

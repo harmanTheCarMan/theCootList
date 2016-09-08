@@ -11,15 +11,15 @@ router.get('/', authorize, (req, res, next) => {
 })
 
 router.get('/create', authorize, (req, res, next) => {
-  res.render('create_task', { title: 'New Task' })
+  res.render('create_item', { title: 'New Item' })
 })
 
 router.post('/create', authorize, (req, res, next) => {
-  res.redirect('/', { title: 'New Task' })
+  res.redirect('/', { title: 'New Item' })
 })
 
 router.get('/update/:id', authorize, (req, res, next) => {
-  res.render('update_task', { title: 'Update' })
+  res.render('update_item', { title: 'Update' })
 })
 
 router.post('/update/:id', authorize, (req, res, next) => {

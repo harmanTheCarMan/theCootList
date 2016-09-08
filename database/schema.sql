@@ -16,7 +16,7 @@ DROP TABLE IF EXISTS items;
 CREATE TABLE items (
   id SERIAL PRIMARY KEY NOT NULL,
   description VARCHAR(255),
-  completed BOOLEAN,
-  rank INTEGER,
+  completed BOOLEAN DEFAULT false,
+  rank SERIAL,
   tab_id SERIAL
 );
