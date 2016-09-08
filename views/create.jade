@@ -2,12 +2,12 @@ extends layout
 
 block content
 	.container
-		h1 Create a item
+		h1 Create a task
 		p.lead Please Describe what needs to get done:
 		br
-		form(role='form', action="/items/create",method="post", style='max-width: 300px;')
+		form(role='form', action="/tasks/create",method="post", style='max-width: 300px;')
 			.form-group
-				textarea.form-control(name="description", placeholder='Describe this item')
+				textarea.form-control(name="description", placeholder='Describe this task')
 			button.btn.btn-default(type='submit') Submit
 
 			a(href='/')

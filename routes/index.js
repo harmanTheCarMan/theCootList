@@ -7,7 +7,7 @@ const authorize = require('../authentication/passport').authorize
 router.get( '/', authorize, (req, res, next) => {
   const { id } = req.user
 
-  Promise.all([  User.tabs( id ), User.items( id ) ])
+  Promise.all([  User.tabs( id ), User.tasks( id ) ])
     .then( result => {
       const rows = result[ 1 ]
       const tabs = result[ 0 ].map( tab =>
