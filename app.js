@@ -10,6 +10,7 @@ const passport = require( './authentication/passport' ).passport
 const routes = require('./routes/index')
 const users = require('./routes/users')
 const items = require('./routes/items')
+const tabs = require('./routes/tabs')
 
 const app = express()
 
@@ -24,14 +25,14 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
-app.use( session({ secret: 'slartibartfast', saveUninitialized: false, resave: false }))
+app.use( session({ secret: 'slartibartfast', saveUninitialized: true, resave: false, cookie: { secure: false } }))
 app.use( passport.initialize() )
 app.use( passport.session() )
 
 app.use('/', routes)
 app.use('/users', users)
 app.use('/items', items)
-
+app.use('/tabs', tabs)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
