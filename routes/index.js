@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../database/db').User
+const Tab = require('../database/db').Tab
+const Item = require('../database/db').Item
 
 const authorize = require('../authentication/passport').authorize
 

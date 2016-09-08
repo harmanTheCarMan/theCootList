@@ -13,7 +13,16 @@ const createTask = 'INSERT INTO tasks (description, tab_id) VALUES ($1, $2) RETU
 
 const allTasks = 'SELECT t.id as tabs_id, t.title, i.*  FROM tabs t JOIN tasks i ON i.tab_id=t.id WHERE t.user_id=$1'
 
+<<<<<<< a74782bd0ea65291457788f0e17778e633a0dc38
+=======
+const allItems = 'SELECT t.id as tabs_id, t.title, i.*  FROM tabs t JOIN items i ON i.tab_id=t.id WHERE t.user_id=$1'
+
+>>>>>>> x
 const allTabsForUser = 'SELECT * from tabs WHERE user_id=$1'
+
+const getTabsByUserId = 'SELECT * FROM tabs WHERE user_id=$1'
+
+const getItemsByTabId = 'SELECT * FROM items WHERE tab_id=$1'
 
 
 const User = {
@@ -32,7 +41,11 @@ const Tab = {
   create: (id, title) => {
     return db.one( createTab, [title, id] )
   },
-  all: id => db.any( allTabsForUser, [id] )
+  all: id => db.any( allTabsForUser, [id] ),
+
+  display: userId => {
+    return db.any( getTabsByUserId, [userId] )
+  }
 }
 
 const Task = {
@@ -42,6 +55,9 @@ const Task = {
   //updating rank somehow
   update: (rank, tab_id) => {
     return db.any( updateRank, [ rank,tab_id ] )//what happens here?
+  },
+  display: tab_id => {
+    return db.any(getItemsByTabId, [tab_id] )
   }
 }
 

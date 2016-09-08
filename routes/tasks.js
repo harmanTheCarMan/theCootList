@@ -15,4 +15,8 @@ router.post( '/', authorize, (request, response) => {
 })
 
 
+router.post('/delete/:id', authorize, (req, res, next) => {
+  res.redirect('/', { title: 'Delete' })
+})
+
 module.exports = router
