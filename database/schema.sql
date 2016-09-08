@@ -12,8 +12,8 @@ CREATE TABLE tabs (
   user_id SERIAL NOT NULL
 );
 
-DROP TABLE IF EXISTS items;
-CREATE TABLE items (
+DROP TABLE IF EXISTS tasks;
+CREATE TABLE tasks (
   id SERIAL PRIMARY KEY,
   description VARCHAR(255),
   completed BOOLEAN DEFAULT false,

@@ -9,9 +9,10 @@ const createUser = 'INSERT INTO users (email, password) VALUES( $1, $2 ) RETURNI
 
 const createTab =  'INSERT INTO tabs (title, user_id) VALUES ($1, $2) RETURNING *'
 
-const createItem = 'INSERT INTO items (description) VALUES ($1) RETURNING id'
+const createTask = 'INSERT INTO tasks (description, tab_id) VALUES ($1, $2) RETURNING *'
 
-const allItems = 'SELECT t.id as tabs_id, t.title, i.*  FROM tabs t JOIN items i ON i.tab_id=t.id WHERE t.user_id=$1'
+const allTasks = 'SELECT t.id as tabs_id, t.title, i.*  FROM tabs t JOIN tasks i ON i.tab_id=t.id WHERE t.user_id=$1'
+
 const allTabsForUser = 'SELECT * from tabs WHERE user_id=$1'
 
 
@@ -24,20 +25,19 @@ const User = {
     return db.any( findByEmailAndPassword, [ email, password ])
   },
   tabs: id => Tab.all( id ),
-  items: id => db.any( allItems, [id] )
+  tasks: id => db.any( allTasks, [id] )
 }
 
 const Tab = {
   create: (id, title) => {
-    console.log( 'Tab.create', id, title )
     return db.one( createTab, [title, id] )
   },
   all: id => db.any( allTabsForUser, [id] )
 }
 
-const Item = {
+const Task = {
   create: description => {
-    return db.one( createItem, [description])
+    return db.one( createTask, [description, tab_id])
   },
   //updating rank somehow
   update: (rank, tab_id) => {
@@ -46,5 +46,5 @@ const Item = {
 }
 
 module.exports = {
-  User, Item, Tab
+  User, Task, Tab
 }

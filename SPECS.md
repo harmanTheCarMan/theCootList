@@ -1,13 +1,13 @@
 # Specifications
 
 - [ ] Create different tabs
-- [ ] Create items for your tabs
+- [ ] Create tasks for your tabs
 - [ ] Default tab is the first tab created
 - [ ] View all of your tabs
-- [ ] Update items on a tab
-- [ ] Delete items from a tab
-- [ ] Check off items as completed or uncompleted
-- [ ] Rearrange items
+- [ ] Update tasks on a tab
+- [ ] Delete tasks from a tab
+- [ ] Check off tasks as completed or uncompleted
+- [ ] Rearrange tasks
 - [ ] Signup/login/logout
 - [ ] The artifact produced is properly licensed, preferably with the MIT license.
 
