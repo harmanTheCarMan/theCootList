@@ -13,11 +13,6 @@ const createTask = 'INSERT INTO tasks (description, tab_id) VALUES ($1, $2) RETU
 
 const allTasks = 'SELECT t.id as tabs_id, t.title, i.*  FROM tabs t JOIN tasks i ON i.tab_id=t.id WHERE t.user_id=$1'
 
-<<<<<<< a74782bd0ea65291457788f0e17778e633a0dc38
-=======
-const allItems = 'SELECT t.id as tabs_id, t.title, i.*  FROM tabs t JOIN items i ON i.tab_id=t.id WHERE t.user_id=$1'
-
->>>>>>> x
 const allTabsForUser = 'SELECT * from tabs WHERE user_id=$1'
 
 const getTabsByUserId = 'SELECT * FROM tabs WHERE user_id=$1'
@@ -56,8 +51,8 @@ const Tab = {
 }
 
 const Task = {
-  create: (tab_id, description) => {
-    return db.one( createTask, [description, tab_id])
+  create: data => {
+    return db.one( createTask, [data.description, data.tab_id])
   },
   //updating rank somehow
   update: (rank, tab_id) => {

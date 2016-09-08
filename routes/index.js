@@ -15,7 +15,9 @@ router.get( '/', authorize, (req, res, next) => {
       const tabs = result[ 0 ].map( tab =>
         Object.assign( {}, tab, { tasks: rows.filter( row => row.tabs_id === tab.id )})
       )
-
+      tabs.forEach( tab => {
+        
+      } )
       res.render('index', { user: req.user, tabs })
     })
     .catch( error =>

@@ -1,14 +1,24 @@
 const express = require('express')
 const router = express.Router()
 const Task = require('../database/db').Task
-
+const Tab = require('../database/db').Tab
 const authorize = require('../authentication/passport').authorize
 
-router.post( '/', authorize, (request, response) => {
-  //Need to change tab_id to correspond to current tab so that tasks can be added for that specific tab instead of only for the default user id only... not sure how to implement
-  const tab_id = request.user.id
-  console.log(tab_id);
-  const description = request.body[ 'new-task' ]
+router.get('/create', authorize, (req, res, next) => {
+  Tab.all(req.user.id).then( result =>
+  res.render('create', { title: 'New task', tabs: result }))
+})
+
+
+router.post('/create', authorize, (req, res, next) => {
+  let description = req.body.description
+  let tab_id = req.body.tab_id
+  let taskData = {description: description, tab_id: tab_id}
+  task.create(taskData)
+    .then( tabs => {
+      
+    })
+})
 
   Task.create( tab_id, description )
     .then( result => response.redirect( '/' ))

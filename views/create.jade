@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	.container
+		h1 Create a task
+		p.lead Please Describe what needs to get done:
+		br
+		form(role='form', action="/tasks/create",method="post", style='max-width: 300px;')
+			.form-group
+				textarea.form-control(name="description", placeholder='Describe this task')
+			.form-group		
+			p #{tabs}
+				button.btn.btn-default(type='submit') Submit
+
+			a(href='/')
+				button.btn.btn-primary(type="button") Cancel
