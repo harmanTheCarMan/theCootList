@@ -36,7 +36,7 @@ const Tab = {
 }
 
 const Task = {
-  create: description => {
+  create: (tab_id, description) => {
     return db.one( createTask, [description, tab_id])
   },
   //updating rank somehow

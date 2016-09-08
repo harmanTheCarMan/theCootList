@@ -23,5 +23,10 @@ block content
 
     .add-tab
       form(action='/tabs', method='post')
-        input(type='text', name='new-tab')
+        input(type='text', name='new-tab' placeholder='Tab Title')
         button(type='submit') Create Tab
+
+    .add-task
+      form(action='/tasks', method='post' )
+        input(type='text', name='new-task' placeholder='Task Description')
+        button(type='submit') Create Task
