@@ -24,6 +24,9 @@ const getTabsByUserId = 'SELECT * FROM tabs WHERE user_id=$1'
 
 const getItemsByTabId = 'SELECT * FROM items WHERE tab_id=$1'
 
+const deleteTab = 'DELETE * FROM tabs where id=$1'
+
+const deleteItem = 'DELETE * FROM items where id=$1'
 
 const User = {
   create: (email, password) => {
@@ -45,6 +48,10 @@ const Tab = {
 
   display: userId => {
     return db.any( getTabsByUserId, [userId] )
+  },
+
+  delete: id => {
+    return db.none( deleteTab, [id] )
   }
 }
 
@@ -58,6 +65,9 @@ const Task = {
   },
   display: tab_id => {
     return db.any(getItemsByTabId, [tab_id] )
+  },
+  delete: id => {
+    return db.none( deleteItem, [id] )
   }
 }
 
