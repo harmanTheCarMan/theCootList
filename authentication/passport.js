@@ -8,21 +8,9 @@ const authenticationFields = {
 
 const strategy = ( email, password, done ) => {
   User.login( email, password )
-    .then( user => {
-      // console.log( 'Strategy', email, password, user )
-      return done( null, user )
-    })
-    .catch( error => {
-      console.log( error )
-
-      return done( null, false, { message: 'User not found.' } )
-    })
+    .then( user => done( null, user[ 0 ] ))
+    .catch( error => done( null, false, { message: 'User not found.' } ))
 }
-
-//Copied from herman thingy
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
 
 passport.use( new LocalStrategy( authenticationFields, strategy ) )
 
@@ -30,7 +18,7 @@ passport.serializeUser( (user, done) => done( null, user.id ))
 
 passport.deserializeUser( (id, done) => {
   User.find( id )
-    .then( user => done( null, user ))
+    .then( user => done( null, user[ 0 ] ))
     .catch( error => done( error, null ))
 })
 

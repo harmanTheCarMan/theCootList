@@ -4,28 +4,21 @@ const User = require('../database/db').User
 
 const authorize = require('../authentication/passport').authorize
 
-/* GET home page. */
-router.get('/', authorize, (req, res, next) => {
-  res.render('index', { title: 'TABR', user:req.user })
-  console.log('user', req.user)
+router.get( '/', authorize, (req, res, next) => {
+  const { id } = req.user
+
+  Promise.all([  User.tabs( id ), User.items( id ) ])
+    .then( result => {
+      const rows = result[ 1 ]
+      const tabs = result[ 0 ].map( tab =>
+        Object.assign( {}, tab, { tasks: rows.filter( row => row.tabs_id === tab.id )})
+      )
+
+      res.render('index', { user: req.user, tabs })
+    })
+    .catch( error =>
+      res.render( 'index', { user: req.user, tabs: [], message: 'An error occurred.' })
+    )
 })
-
-router.get('/create', authorize, (req, res, next) => {
-  res.render('create_item', { title: 'New Item' })
-})
-
-router.post('/create', authorize, (req, res, next) => {
-  res.redirect('/', { title: 'New Item' })
-})
-
-router.get('/update/:id', authorize, (req, res, next) => {
-  res.render('update_item', { title: 'Update' })
-})
-
-router.post('/update/:id', authorize, (req, res, next) => {
-  res.redirect('/', { title: 'Update' })
-})
-
-
 
 module.exports = router

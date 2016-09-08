@@ -1,11 +1,27 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
-	if (!user)
-		a(href='/users/register') Register
-			div
-		a(href='/users/login') Login
-	if (user)
-		You are currently logged in as #{user.email}
+  h1 TABR
+  p Welcome to TABR
+
+  if( user )
+    You are currently logged in as #{user.email}
+
+  if( message )
+    .message= message
+
+  .tabs
+    each tab in tabs
+      .tab
+        h2= tab.title
+
+        .tasks
+          each task in tab.tasks
+            .task(data-id=`${task.id}`)
+              input(type='checkbox', checked=( task.completed ? "checked" : undefined))
+              span.description= task.description
+
+    .add-tab
+      form(action='/tabs', method='post')
+        input(type='text', name='new-tab')
+        button(type='submit') Create Tab
