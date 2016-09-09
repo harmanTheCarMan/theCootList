@@ -19,6 +19,9 @@ const moveDown = 'UPDATE tasks SET rank = rank + 1 WHERE tab_id=$1 AND rank=$2'
 const moveUp = 'UPDATE tasks SET rank = rank - 1 WHERE tab_id=$1 AND rank=$2'
 const setRank = 'UPDATE tasks SET rank = $1 WHERE id=$2'
 
+const completeTask = 'UPDATE tasks SET completed = true WHERE id=$1'
+const uncompleteTask = 'UPDATE tasks SET completed = false WHERE id=$1'
+
 const User = {
   create: (email, password) => {
     return db.one( createUser, [ email, password ])
@@ -35,6 +38,7 @@ const Tab = {
   create: (id, title) => {
     return db.one( createTab, [title, id] )
   },
+
   all: id => db.any( allTabsForUser, [id] )
 }
 
@@ -48,7 +52,13 @@ const Task = {
   },
   moveUp: (tab_id, rank) => db.any( moveUp, [tab_id, rank]),
   moveDown: (tab_id, rank) => db.any( moveDown, [tab_id, rank]),
-  setRank: (id, rank) => db.any( setRank, [rank, id])
+  setRank: (id, rank) => db.any( setRank, [rank, id]),
+  completeTask: (task_id) => {
+    return db.one( completeTask, [task_id] )
+  },
+  uncompleteTask: (task_id) => {
+    return db.one( uncompleteTask, [task_id] )
+  }
 }
 
 module.exports = {
