@@ -1,13 +1,10 @@
 extends layout
 
 block content
-  .navbar-btn
-    .navbar-text
-      a(href='/')
-        h1 TABR
-    if( user )
-      p Logged in as #{user.email}
-      a(href='/users/logout') Logout
+  if( user )
+    p Logged in as #{user.email}
+    a(href='/users/logout')
+      button.btn.btn-default(type='button') Logout
   .add-tab
     form(action='/tabs', method='post')
       input(type='text', name='new-tab' placeholder='Tab Title')
