@@ -22,6 +22,11 @@ block content
   .tab-content
     each tab, index in tabs
       div.tab-pane(role='tabpanel', id=`tab-${tab.id}`, class=`${index === 0 ? 'active' : ''}`)
+        form(method='post', action='/tabs/delete')
+          input(type='hidden', name='id', value=`${tab.id}`)
+          button.btn.btn-warning(type='submit')
+            span.glyphicon.glyphicon-remove-circle
+
         each task in tab.tasks
           .task(data-id=`${task.id}`)
             input(type='checkbox', checked=task.completed, data-id=task.id)
@@ -40,3 +45,8 @@ block content
               input(type='hidden', name='tab-id', value=`${tab.id}`)
               button(type='submit')
                 span.glyphicon.glyphicon-arrow-down
+
+            form(method='post', action='/tasks/delete/')
+              input(type='hidden', name='id', value=`${task.id}`)
+              button(type='submit')
+                span.glyphicon.glyphicon-remove-circle
