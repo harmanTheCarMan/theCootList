@@ -38,6 +38,4 @@ router.get( '/logout', (request, response) => {
   response.redirect( '/' )
 })
 
-// router.post('/logout', ) //Do we need a router.post for logout?
-
 module.exports = router
