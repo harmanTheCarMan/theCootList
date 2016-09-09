@@ -1,35 +1,28 @@
 extends layout
 
 block content
-  h1 TABR
-  p Welcome to TABR
+  .add-tab
+    form(action='/tabs', method='post')
+      input(type='text', name='new-tab' placeholder='Tab Title')
+      button(type='submit') Create Tab
 
-  if( user )
-    p Logged in as #{user.email}
+  .add-task
+    form(action='/tasks', method='post' )
+      select(name='tab-id')
+        each tab in tabs
+          option(label=`${tab.title}`, value=`${tab.id}`)
+      input(type='text', name='new-task' placeholder='Task Description')
+      button(type='submit') Create Task
 
-  if( message )
-    .message= message
+  ul.nav.nav-tabs(role='tablist')
+    each tab, index in tabs
+      li(role='presentation', class=`${index === 0 ? 'active' : ''}`)
+        a(href=`#tab-${tab.id}`, aria-controls=`${tab.title}`, role='tab', data-toggle='tab')= tab.title
 
-  .tabs
-    each tab in tabs
-      .tab
-        h2= tab.title
-
-        .tasks
-          each task in tab.tasks
-            .task(data-id=`${task.id}`)
-              input(type='checkbox', checked=( task.completed ? "checked" : undefined))
-              span.description= task.description
-
-    .add-tab
-      form(action='/tabs', method='post')
-        input(type='text', name='new-tab' placeholder='Tab Title')
-        button(type='submit') Create Tab
-
-    .add-task
-      form(action='/tasks', method='post' )
-        select(name='tab-id')
-          each tab in tabs
-            option(label=`${tab.title}`, value=`${tab.id}`)
-        input(type='text', name='new-task' placeholder='Task Description')
-        button(type='submit') Create Task
+  .tab-content
+    each tab, index in tabs
+      div.tab-pane(role='tabpanel', id=`tab-${tab.id}`, class=`${index === 0 ? 'active' : ''}`)
+        each task in tab.tasks
+          .task(data-id=`${task.id}`)
+            input(type='checkbox', checked=( task.completed ? "checked" : undefined))
+            span.description= task.description
