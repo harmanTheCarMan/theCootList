@@ -26,3 +26,15 @@ block content
           .task(data-id=`${task.id}`)
             input(type='checkbox', checked=( task.completed ? "checked" : undefined))
             span.description= task.description
+
+            form(method='post', action='/tasks/up')
+              input(type='hidden', name='rank', value=`${task.rank}`)
+              input(type='hidden', name='id', value=`${task.id}`)
+              input(type='hidden', name='tab-id', value=`${tab.id}`)
+              button(type='submit') Up
+
+            form(method='post', action='/tasks/down')
+              input(type='hidden', name='rank', value=`${task.rank}`)
+              input(type='hidden', name='id', value=`${task.id}`)
+              input(type='hidden', name='tab-id', value=`${tab.id}`)
+              button(type='submit') Down

@@ -17,6 +17,6 @@ CREATE TABLE tasks (
   id SERIAL PRIMARY KEY,
   description VARCHAR(255),
   completed BOOLEAN DEFAULT false,
-  rank SERIAL,
+  rank INTEGER NOT NULL,
   tab_id SERIAL
 );
