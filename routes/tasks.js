@@ -10,7 +10,27 @@ router.post( '/', authorize, (request, response) => {
 
   Task.create( tab_id, description )
     .then( result => response.redirect( '/' ))
+    .catch( error => console.log( error ))
 })
 
+router.post( '/up', authorize, (request, response) => {
+  const rank = parseInt( request.body.rank )
+  const id = request.body.id
+  const tab_id = request.body[ 'tab-id' ]
+
+  Task.moveDown( tab_id, rank )
+    .then( result => Task.setRank( id, rank - 1 ))
+    .then( result => response.redirect( '/' ))
+})
+
+router.post( '/down', authorize, (request, response) => {
+  const rank = parseInt( request.body.rank )
+  const id = request.body.id
+  const tab_id = request.body[ 'tab-id' ]
+
+  Task.moveUp( tab_id, rank )
+    .then( result => Task.setRank( id, rank + 1 ))
+    .then( result => response.redirect( '/' ))
+})
 
 module.exports = router
