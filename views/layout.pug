@@ -8,12 +8,7 @@ html
     script(src="/javascripts/client.js")
   body
     .container
-      h1 TABR
-      p Welcome to TABR
-
-      if( user )
-        p Logged in as #{user.email}
-        a(href='/users/logout') Logout
+      img.img-responsive(src='/images/TABR.png', alt='Responsive image' class="img-rounded")
 
       if( message )
         .message= message

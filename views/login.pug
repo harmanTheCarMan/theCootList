@@ -1,10 +1,9 @@
 extends layout
 
 block content
-  .container
-    h1 Login Page
-    p.lead Say something worthwhile here.
-    br
+  .container.text-center
+    h1.text-center Welcome Back to TABR
+    p.lead Please login below
     form(role='form', action="/users/login",method="post", style='max-width: 300px;')
       .form-group
         input.form-control(type='text', name="email", placeholder='Enter Email')
@@ -15,5 +14,5 @@ block content
         a(href='/')
         button#btnCancel.btn.btn-primary.btn-sm(type='button') Cancel
     div
-      p If this is your first time here, please
-        a(href='/users/register') Register
+      p If this is your first time using TABR, please
+        a(href='/users/register')  Register Here
