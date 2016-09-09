@@ -24,8 +24,8 @@ block content
       div.tab-pane(role='tabpanel', id=`tab-${tab.id}`, class=`${index === 0 ? 'active' : ''}`)
         each task in tab.tasks
           .task(data-id=`${task.id}`)
-            input(type='checkbox', checked=task.completed data-id=task.id)
-            span.description= task.description
+            input(type='checkbox', checked=task.completed, data-id=task.id)
+            input.task-description(type='text', data-id=task.id, value=task.description)
 
             form(method='post', action='/tasks/up')
               input(type='hidden', name='rank', value=`${task.rank}`)
