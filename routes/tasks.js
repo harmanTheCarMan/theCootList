@@ -12,6 +12,14 @@ router.post( '/', authorize, (request, response) => {
     .then( result => response.redirect( '/' ))
 })
 
+router.post( '/update', authorize, (request, response) => {
+  const { id, value } = request.body
+
+  Task.update( id, value )
+    .then( result => response.redirect( '/' ))
+    .catch( error => console.log( error ))
+})
+
 router.post( '/completeTask', authorize, (request, response) => {
   const task_id = request.body[ 'id' ]
 

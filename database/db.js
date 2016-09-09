@@ -22,6 +22,8 @@ const setRank = 'UPDATE tasks SET rank = $1 WHERE id=$2'
 const completeTask = 'UPDATE tasks SET completed = true WHERE id=$1'
 const uncompleteTask = 'UPDATE tasks SET completed = false WHERE id=$1'
 
+const updateDescription = 'UPDATE tasks SET description=$2 WHERE id=$1'
+
 const User = {
   create: (email, password) => {
     return db.one( createUser, [ email, password ])
@@ -45,8 +47,8 @@ const Task = {
   create: (tab_id, description) => {
     return db.one( createTask, [description, tab_id])
   },
-  update: (id) => {
-    return db.any( '', [id ] )
+  update: (id, value) => {
+    return db.any( updateDescription, [id, value] )
   },
   moveUp: (tab_id, rank) => db.any( moveUp, [tab_id, rank]),
   moveDown: (tab_id, rank) => db.any( moveDown, [tab_id, rank]),
