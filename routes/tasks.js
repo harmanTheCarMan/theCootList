@@ -14,14 +14,12 @@ router.post('/create', authorize, (req, res, next) => {
   let description = req.body.description
   let tab_id = req.body.tab_id
   let taskData = {description: description, tab_id: tab_id}
-  task.create(taskData)
-    .then( tabs => {
-      
-    })
-})
-
-  Task.create( tab_id, description )
-    .then( result => response.redirect( '/' ))
+  console.log('desc', description, 'tab', tab_id)
+  Task.create( taskData )
+    .then( result => response.redirect( '/' )
+    .catch( error =>
+      res.redirect( '/', { user: req.user, tabs: [], message: 'An error occurred.' })
+    ))
 })
 
 
