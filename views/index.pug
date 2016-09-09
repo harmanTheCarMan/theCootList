@@ -25,7 +25,7 @@ block content
         each task in tab.tasks
           .task(data-id=`${task.id}`)
             input(type='checkbox', checked=task.completed data-id=task.id)
-            span.description= task.description
+            input.task-description(type='text', value=task.description)
 
             form(method='post', action='/tasks/up')
               input(type='hidden', name='rank', value=`${task.rank}`)
