@@ -28,5 +28,8 @@ block content
 
     .add-task
       form(action='/tasks', method='post' )
+        select(name='tab-id')
+          each tab in tabs
+            option(label=`${tab.title}`, value=`${tab.id}`)
         input(type='text', name='new-task' placeholder='Task Description')
         button(type='submit') Create Task
