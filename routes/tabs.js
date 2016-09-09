@@ -12,4 +12,10 @@ router.post( '/', authorize, (request, response) => {
     .then( result => response.redirect( '/' ))
 })
 
+router.post( '/delete', authorize, (request, response) => {
+  Tab.delete( request.body.id )
+  .then( result => response.redirect( '/' ))
+  .catch( error => console.log( error ))
+})
+
 module.exports = router

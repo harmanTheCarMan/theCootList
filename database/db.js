@@ -24,6 +24,10 @@ const uncompleteTask = 'UPDATE tasks SET completed = false WHERE id=$1'
 
 const updateDescription = 'UPDATE tasks SET description=$2 WHERE id=$1'
 
+const deleteTab = "DELETE FROM tabs WHERE id=$1"
+const deleteTabTasks = "DELETE FROM tasks WHERE tab_id=$1"
+const deleteTask = "DELETE FROM tasks WHERE id=$1"
+
 const User = {
   create: (email, password) => {
     return db.one( createUser, [ email, password ])
@@ -40,7 +44,11 @@ const Tab = {
   create: (id, title) => {
     return db.one( createTab, [title, id] )
   },
-  all: id => db.any( allTabsForUser, [id] )
+  all: id => db.any( allTabsForUser, [id] ),
+  delete: id => Promise.all([
+    db.any( deleteTab, [id] ),
+    db.any( deleteTabTasks, [id] )
+  ])
 }
 
 const Task = {
@@ -58,7 +66,8 @@ const Task = {
   },
   uncompleteTask: (task_id) => {
     return db.one( uncompleteTask, [task_id] )
-  }
+  },
+  delete: id => db.any( deleteTask, [id] )
 }
 
 module.exports = {
