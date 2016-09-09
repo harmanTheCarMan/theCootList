@@ -2,14 +2,15 @@ extends layout
 
 block content
   .container.text-center
-    h1.text-center Welcome Back to TABR
+    h1 Welcome Back to TABR
     p.lead Please login below
     form(role='form', action="/users/login",method="post", style='max-width: 300px;')
+    .form-group-inline
       .form-group
         input.form-control(type='text', name="email", placeholder='Enter Email')
       .form-group
         input.form-control(type='password', name="password", placeholder='Password')
-      .btn-toolbar
+      .btn-toolbar.btn-center
         button#btnSubmit.btn.btn-primary.btn-sm(type='submit') Submit
         a(href='/')
         button#btnCancel.btn.btn-primary.btn-sm(type='button') Cancel

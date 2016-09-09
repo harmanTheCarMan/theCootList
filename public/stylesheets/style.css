@@ -6,3 +6,14 @@ body {
 a {
   color: #00B7FF;
 }
+
+.col-md-12 column {
+   text-align:center;
+}
+.col-md-12 column form {
+   display:inline-block;
+}
+
+.btn-center {
+  display:inline-block;
+}
