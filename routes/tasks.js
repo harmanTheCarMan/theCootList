@@ -10,8 +10,22 @@ router.post( '/', authorize, (request, response) => {
 
   Task.create( tab_id, description )
     .then( result => response.redirect( '/' ))
+})
+
+router.post( '/completeTask', authorize, (request, response) => {
+  const task_id = request.body[ 'id' ]
+
+  Task.completeTask( task_id )
+    .then( result => response.redirect( '/' ))
     .catch( error => console.log( error ))
 })
+
+router.post( '/uncompleteTask', authorize, (request, response) => {
+  const task_id = request.body[ 'id' ]
+
+  Task.uncompleteTask( task_id )
+    .then( result => response.redirect( '/' ))
+    .catch( error => console.log( error ))})
 
 router.post( '/up', authorize, (request, response) => {
   const rank = parseInt( request.body.rank )

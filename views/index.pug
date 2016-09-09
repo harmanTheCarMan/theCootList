@@ -24,17 +24,19 @@ block content
       div.tab-pane(role='tabpanel', id=`tab-${tab.id}`, class=`${index === 0 ? 'active' : ''}`)
         each task in tab.tasks
           .task(data-id=`${task.id}`)
-            input(type='checkbox', checked=( task.completed ? "checked" : undefined))
+            input(type='checkbox', checked=task.completed data-id=task.id)
             span.description= task.description
 
             form(method='post', action='/tasks/up')
               input(type='hidden', name='rank', value=`${task.rank}`)
               input(type='hidden', name='id', value=`${task.id}`)
               input(type='hidden', name='tab-id', value=`${tab.id}`)
-              button(type='submit') Up
+              button(type='submit')
+                span.glyphicon.glyphicon-arrow-up
 
             form(method='post', action='/tasks/down')
               input(type='hidden', name='rank', value=`${task.rank}`)
               input(type='hidden', name='id', value=`${task.id}`)
               input(type='hidden', name='tab-id', value=`${tab.id}`)
-              button(type='submit') Down
+              button(type='submit')
+                span.glyphicon.glyphicon-arrow-down
