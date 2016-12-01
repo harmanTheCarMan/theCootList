@@ -2,7 +2,7 @@
 # Tabr started by @phoniks and @harmanLearns
 Tab based To Do List App with unlimited `tabs` and `tasks`.
 
-## What you will be able to with our app:
+## What you will be able to with our app
 
 - Create different tabs
 - Create tasks for your tabs
@@ -22,9 +22,9 @@ Tab based To Do List App with unlimited `tabs` and `tasks`.
 - [postgres](http://devdocs.io/postgresql/)
 - [pug](https://pugjs.org/api/getting-started.html)
 - [pg-promise](https://github.com/vitaly-t/pg-promise)
-- [BootStrap](http://getbootstrap.com/)
+- [Bootstrap](http://getbootstrap.com/)
 
-## Steps to setup app:
+## Steps to setup app
 #### 1. if ( you need to clone the repo ){
 
         $ git clone https://github.com/harmanlearns/theCootList.git harmanTabr
@@ -32,7 +32,7 @@ Tab based To Do List App with unlimited `tabs` and `tasks`.
 ####    }
 ####2. if ( you have postgres installed and running properly ){
 
-$ psql -f database/schema.sql // Creates postgres database called tabr
+        $ psql -f database/schema.sql // Creates postgres database called tabr
 
 ####  }else if ( you do not have postgres installed * ){
     
@@ -71,4 +71,4 @@ $ psql -f database/schema.sql // Creates postgres database called tabr
 
         $ yarn start
 
-* Most of the instructions to brew install postgres come from [Moncef Belyami](https://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/)
+\* Most of the instructions to brew install postgres come from [Moncef Belyami](https://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/)
