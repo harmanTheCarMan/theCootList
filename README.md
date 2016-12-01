@@ -2,17 +2,39 @@
 # Tabr started by @phoniks and @harmanLearns
 Tab based To Do List App with unlimited `tabs` and `tasks`.
 
-### Steps to setup app:
-1. if ( you need to clone the repo ){
+## What you will be able to with our app:
+
+- Create different tabs
+- Create tasks for your tabs
+- View all of your tasks for a specific tab
+- Update tasks on a tab
+- Delete tasks from a tab
+- Check off tasks as completed or uncompleted
+- Rearrange tasks
+- Signup/login/logout
+
+## Stack
+
+- [node](https://nodejs.org/en/)
+- [express](http://expressjs.com/)
+- [passport](http://passportjs.org/)
+- [es2016](http://es6-features.org/#Constants)
+- [postgres](http://devdocs.io/postgresql/)
+- [pug](https://pugjs.org/api/getting-started.html)
+- [pg-promise](https://github.com/vitaly-t/pg-promise)
+- [BootStrap](http://getbootstrap.com/)
+
+## Steps to setup app:
+#### 1. if ( you need to clone the repo ){
 
         $ git clone https://github.com/harmanlearns/theCootList.git harmanTabr
       
-    }
-2. if ( you have postgres installed and running properly ){
+####    }
+####2. if ( you have postgres installed and running properly ){
 
-        $ psql -f database/schema.sql // Creates postgres database called tabr
+$ psql -f database/schema.sql // Creates postgres database called tabr
 
-  }else if ( you do not have postgres installed ){
+####  }else if ( you do not have postgres installed ){
     
       $ brew update 
       
@@ -35,38 +57,16 @@ Tab based To Do List App with unlimited `tabs` and `tasks`.
       $ \q // get out of postgres command line 
       
       $ psql -f database/schema.sql // Creates postgres database called tabr
-
-3. if ( you do not have yarn installed ) {
+####  }
+####3. if ( you do not have yarn installed ) {
 
         $ npm i -g yarn
 
-  }else{
+####  }else{
   
         $ yarn // installs all dependencies listed in package.json and based on yarn.lock file
     
-  }
-4. Start the app on [localhost:3000/users/register](http://localhost:3000/users/register)
+####  }
+####4. Start the app on [localhost:3000/users/register](http://localhost:3000/users/register)
 
         $ yarn start
-
-## What you will be able to with our app:
-
-- Create different tabs
-- Create tasks for your tabs
-- View all of your tasks for a specific tab
-- Update tasks on a tab
-- Delete tasks from a tab
-- Check off tasks as completed or uncompleted
-- Rearrange tasks
-- Signup/login/logout
-
-## Stack
-
-- [node](https://nodejs.org/en/)
-- [express](http://expressjs.com/)
-- [passport](http://passportjs.org/)
-- [es2016](http://es6-features.org/#Constants)
-- [postgres](http://devdocs.io/postgresql/)
-- [pug](https://pugjs.org/api/getting-started.html)
-- [pg-promise](https://github.com/vitaly-t/pg-promise)
-- [BootStrap](http://getbootstrap.com/)
