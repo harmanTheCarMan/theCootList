@@ -34,7 +34,7 @@ Tab based To Do List App with unlimited `tabs` and `tasks`.
 
 $ psql -f database/schema.sql // Creates postgres database called tabr
 
-####  }else if ( you do not have postgres installed ){
+####  }else if ( you do not have postgres installed * ){
     
       $ brew update 
       
@@ -70,3 +70,5 @@ $ psql -f database/schema.sql // Creates postgres database called tabr
 ####4. Start the app on [localhost:3000/users/register](http://localhost:3000/users/register)
 
         $ yarn start
+
+* Most of the instructions to brew install postgres come from [Moncef Belyami](https://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/)
